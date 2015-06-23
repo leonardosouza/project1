@@ -18,6 +18,8 @@ function getPage($page) {
         return "pages/home.php";
     }
 }
+
+$currentPage = (isset($_GET["page"])) ? $_GET["page"] : null;
 ?>
 <!doctype html>
 <html lang="en">
@@ -33,7 +35,7 @@ function getPage($page) {
             <?php require_once("inc/menu.php"); ?>
         </header>
         <main>
-            <?php require_once(getPage($_GET["page"])); ?>
+            <?php require_once(getPage($currentPage)); ?>
         </main>
         <footer>
             <div class="container">
