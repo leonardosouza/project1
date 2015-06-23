@@ -8,15 +8,11 @@ function getPage() {
         $page = "home";
     }
 
-    if(strlen($page) == 0) {
+    if(strlen($page) == 0 || file_exists("pages/{$page}.php") == 0) {
         $page = "404";
     }
 
-    $target = "pages/{$page}.php";
-    
-    if(file_exists($target)) {
-        return $target;
-    }
+    return "pages/{$page}.php";
 }
 ?>
 <!doctype html>
