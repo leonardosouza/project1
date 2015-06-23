@@ -1,25 +1,23 @@
 <?php
-
-function getPage($page) {
-    if(isset($page)) {
-        switch ($page) {
-            case "home":
-            case "business":
-            case "products":
-            case "services":
-            case "contact":
-            case "success":
-                return "pages/" . $page . ".php";
-                break;
-            default:
-                return "pages/404.php";
-        }
+function getPage() {
+    $route = parse_url("http://".$_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"]);
+    
+    if(strlen($route["path"]) > 1) {
+        $page = preg_replace("/^(\/)/", "", $route["path"]);
     } else {
-        return "pages/home.php";
+        $page = "home";
+    }
+
+    if(strlen($page) == 0) {
+        $page = "404";
+    }
+
+    $target = "pages/{$page}.php";
+    
+    if(file_exists($target)) {
+        return $target;
     }
 }
-
-$currentPage = (isset($_GET["page"])) ? $_GET["page"] : null;
 ?>
 <!doctype html>
 <html lang="en">
@@ -35,7 +33,7 @@ $currentPage = (isset($_GET["page"])) ? $_GET["page"] : null;
             <?php require_once("inc/menu.php"); ?>
         </header>
         <main>
-            <?php require_once(getPage($currentPage)); ?>
+            <?php require_once(getPage()); ?>
         </main>
         <footer>
             <div class="container">

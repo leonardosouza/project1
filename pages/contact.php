@@ -3,7 +3,7 @@
         <h1>Contato</h1>
     </div>
 
-    <form action="?page=success" method="POST">
+    <form action="/success" method="POST">
         <div class="form-group">
             <label for="nome">Nome</label>
             <input type="nome" class="form-control" name="nome" id="nome" placeholder="Nome">
