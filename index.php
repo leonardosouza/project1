@@ -9,6 +9,7 @@ function getPage() {
     }
 
     if(strlen($page) == 0 || file_exists("pages/{$page}.php") == 0) {
+        http_response_code(404);
         $page = "404";
     }
 
