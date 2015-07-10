@@ -9,3 +9,13 @@
         </ul>
     </div>
 </nav>
+<div class="container">
+<form action="" method="GET" class="form-inline">
+  <fieldset>
+      <div class="form-group">
+        <input type="search" name="search" id="search" class="form-control" placeholder="Busque um conteúdo">
+      </div>
+      <button type="submit" class="btn btn-primary">Buscar</button>
+  <fieldset>
+</form>
+</div>
